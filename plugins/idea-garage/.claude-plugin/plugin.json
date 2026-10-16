@@ -7,5 +7,17 @@
     "name": "Andrea"
   },
   "license": "MIT",
-  "keywords": ["kids", "bambini", "games", "giochi", "education", "phaser", "babylonjs", "no-code", "beginners"]
+  "keywords": [
+    "kids",
+    "bambini",
+    "games",
+    "giochi",
+    "education",
+    "phaser",
+    "babylonjs",
+    "no-code",
+    "beginners"
+  ],
+  "homepage": "https://github.com/knghtlos/idea-garage",
+  "repository": "https://github.com/knghtlos/idea-garage"
 }

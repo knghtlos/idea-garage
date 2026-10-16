@@ -56,7 +56,7 @@ Servono [Claude Code](https://code.claude.com), [Node.js](https://nodejs.org) 18
 Per pubblicare serve anche la [GitHub CLI](https://cli.github.com) con un account GitHub dell'adulto.
 
 ```
-/plugin marketplace add <owner>/idea-garage
+/plugin marketplace add knghtlos/idea-garage
 /plugin install idea-garage@idea-garage
 ```
 
@@ -124,7 +124,7 @@ a web page with all their creations.
 Commands in English: `/new-game`, `/try-game`, `/improve`, `/fix`, `/go-back`, `/how-it-works`, `/publish`,
 `/help-me`. Or just say "hi" and Claude suggests where to pick up.
 
-**Install** (grown-up): `/plugin marketplace add <owner>/idea-garage`, `/plugin install idea-garage@idea-garage`,
+**Install** (grown-up): `/plugin marketplace add knghtlos/idea-garage`, `/plugin install idea-garage@idea-garage`,
 then `/idea-garage:start` in an empty folder. The first time Claude opens in the garage folder, accept the
 "trust this folder" question, so the child never sees permission prompts.
 
