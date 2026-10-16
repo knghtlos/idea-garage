@@ -1,0 +1,153 @@
+/* Motore del portale Idea Garage. Non modificare: le scelte personali vanno in tema.css */
+:root {
+  --colore: #6c5ce7;          /* colore preferito: viene da portale.json */
+  --sfondo: #fff8ef;
+  --carta: #ffffff;
+  --testo: #2d2a32;
+  --testo-tenue: #6b6575;
+  --bordo: #eadfd0;
+  --ombra: 0 6px 0 rgba(45, 42, 50, 0.08);
+  --raggio: 18px;
+  --font-titoli: "Baloo 2", "Comic Sans MS", system-ui, sans-serif;
+  --font-testo: "Nunito", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sfondo: #1d1b22;
+    --carta: #2a2731;
+    --testo: #f4f1f8;
+    --testo-tenue: #b7b0c2;
+    --bordo: #3b3744;
+    --ombra: 0 6px 0 rgba(0, 0, 0, 0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --sfondo: #1d1b22;
+  --carta: #2a2731;
+  --testo: #f4f1f8;
+  --testo-tenue: #b7b0c2;
+  --bordo: #3b3744;
+  --ombra: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--sfondo);
+  color: var(--testo);
+  font-family: var(--font-testo);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.testata {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 16px 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.mascotte {
+  font-size: 64px;
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  background: var(--carta);
+  border: 3px solid var(--colore);
+  border-radius: 50%;
+  box-shadow: var(--ombra);
+  flex-shrink: 0;
+  animation: saluta 2.4s ease-in-out infinite;
+}
+@keyframes saluta { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-8deg) translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .mascotte { animation: none; } }
+h1 {
+  font-family: var(--font-titoli);
+  font-size: clamp(32px, 6vw, 52px);
+  margin: 0;
+  line-height: 1.05;
+  color: var(--colore);
+}
+.sottotitolo { margin: 4px 0 0; color: var(--testo-tenue); }
+
+main { max-width: 1080px; margin: 0 auto; padding: 0 16px 48px; }
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+}
+.scheda {
+  background: var(--carta);
+  border: 2px solid var(--bordo);
+  border-radius: var(--raggio);
+  box-shadow: var(--ombra);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.15s ease;
+}
+.scheda:hover { transform: translateY(-3px); }
+.copertina {
+  aspect-ratio: 16 / 10;
+  background: color-mix(in srgb, var(--colore) 18%, var(--carta));
+  display: grid;
+  place-items: center;
+  font-size: 56px;
+}
+.copertina img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scheda-corpo { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.scheda h2 { font-family: var(--font-titoli); font-size: 24px; margin: 0; line-height: 1.15; }
+.scheda p { margin: 0; color: var(--testo-tenue); font-size: 16px; }
+.azioni { display: flex; gap: 8px; margin-top: auto; padding-top: 10px; flex-wrap: wrap; }
+.bottone {
+  font-family: var(--font-titoli);
+  font-size: 19px;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  background: var(--colore);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--colore) 60%, #000);
+}
+.bottone:active { transform: translateY(3px); box-shadow: none; }
+.bottone.secondario {
+  background: transparent;
+  color: var(--colore);
+  box-shadow: inset 0 0 0 2px var(--colore);
+}
+.etichetta {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: var(--font-titoli);
+  font-size: 15px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: #ffd23f;
+  color: #4a3500;
+}
+.etichetta.bozza { background: #dfe6e9; color: #2d3436; }
+.etichetta.attesa { background: #ffeaa7; color: #5c4400; }
+.stella {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  filter: grayscale(1) opacity(0.55);
+  line-height: 1;
+}
+.stella[aria-pressed="true"] { filter: none; }
+
+.vuoto { text-align: center; padding: 64px 16px; color: var(--testo-tenue); }
+.vuoto-icona { font-size: 72px; }
+.vuoto p { font-family: var(--font-titoli); font-size: 26px; margin: 8px 0 0; }
+
+.piede { text-align: center; color: var(--testo-tenue); font-size: 14px; padding: 0 16px 32px; }

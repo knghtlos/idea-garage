@@ -1,0 +1,14 @@
+{
+  "name": "idea-garage",
+  "description": "Idea Garage: build games (and soon small apps) by just telling your idea. Designed for an 8-year-old, works for anyone who has never programmed.",
+  "owner": {
+    "name": "Andrea"
+  },
+  "plugins": [
+    {
+      "name": "idea-garage",
+      "source": "./plugins/idea-garage",
+      "description": "Tell your idea, answer a few fun questions, approve your game card, and Claude builds, tests and opens your game in the browser. Your games live in your own web portal."
+    }
+  ]
+}

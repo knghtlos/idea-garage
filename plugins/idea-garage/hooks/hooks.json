@@ -1,0 +1,21 @@
+{
+  "description": "Idea Garage: garage context at session start, and the garage guard on file writes and shell commands. Both do nothing outside a garage folder.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/garage-contesto.mjs\"" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/guardia.mjs\"" }
+        ]
+      }
+    ]
+  }
+}

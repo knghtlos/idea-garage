@@ -1,0 +1,145 @@
+/* Stile condiviso della carta del gioco e della pagina "Come l'ho fatto". Motore: non modificare. */
+:root {
+  --colore: #6c5ce7;
+  --sfondo: #fff8ef;
+  --carta: #ffffff;
+  --testo: #2d2a32;
+  --testo-tenue: #6b6575;
+  --bordo: #eadfd0;
+  --codice-sfondo: #1f1d2b;
+  --codice-testo: #f2efe9;
+  --ombra: 0 6px 0 rgba(45, 42, 50, 0.08);
+  --font-titoli: "Baloo 2", "Comic Sans MS", system-ui, sans-serif;
+  --font-testo: "Nunito", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sfondo: #1d1b22; --carta: #2a2731; --testo: #f4f1f8; --testo-tenue: #b7b0c2; --bordo: #3b3744;
+    --ombra: 0 6px 0 rgba(0, 0, 0, 0.35);
+  }
+}
+:root[data-theme="dark"] {
+  --sfondo: #1d1b22; --carta: #2a2731; --testo: #f4f1f8; --testo-tenue: #b7b0c2; --bordo: #3b3744;
+  --ombra: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--sfondo);
+  color: var(--testo);
+  font-family: var(--font-testo);
+  font-size: 19px;
+  line-height: 1.6;
+}
+.pagina { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+h1, h2, h3 { font-family: var(--font-titoli); line-height: 1.15; }
+h1 { font-size: clamp(34px, 7vw, 56px); color: var(--colore); margin: 0 0 8px; }
+h2 { font-size: 30px; margin: 40px 0 12px; }
+h3 { font-size: 23px; margin: 24px 0 8px; }
+p { margin: 0 0 14px; }
+img { max-width: 100%; }
+.riquadro {
+  background: var(--carta);
+  border: 2px solid var(--bordo);
+  border-radius: 18px;
+  box-shadow: var(--ombra);
+  padding: 20px;
+  margin: 16px 0;
+}
+
+/* --- Carta del gioco --- */
+.carta-testata { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.palco {
+  width: 220px;
+  height: 220px;
+  border-radius: 24px;
+  border: 3px solid var(--colore);
+  background: color-mix(in srgb, var(--colore) 15%, var(--carta));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.palco img { width: 70%; height: 70%; object-fit: contain; animation: mossa 1.2s ease-in-out infinite; }
+@keyframes mossa { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-22px); } }
+@media (prefers-reduced-motion: reduce) { .palco img { animation: none; } }
+.regole { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.regole li {
+  background: var(--carta);
+  border: 2px solid var(--bordo);
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.regole li .emoji { font-size: 26px; line-height: 1.2; }
+.tasti kbd {
+  font-family: var(--font-titoli);
+  background: var(--carta);
+  border: 2px solid var(--bordo);
+  border-bottom-width: 4px;
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+/* --- Come l'ho fatto --- */
+.parola {
+  background: color-mix(in srgb, var(--colore) 22%, transparent);
+  border-bottom: 2px dotted var(--colore);
+  border-radius: 4px;
+  padding: 0 3px;
+  cursor: help;
+}
+.parola:focus { outline: 3px solid var(--colore); outline-offset: 2px; }
+.fumetto {
+  position: absolute;
+  z-index: 10;
+  background: var(--testo);
+  color: var(--sfondo);
+  font-size: 17px;
+  line-height: 1.45;
+  padding: 10px 14px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.schermata { position: relative; border-radius: 16px; overflow: hidden; border: 3px solid var(--bordo); }
+.schermata img { display: block; width: 100%; }
+.schermata .pezzo-bottone {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-titoli);
+  font-size: 16px;
+  border: 3px solid #fff;
+  background: var(--colore);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+pre.codice {
+  background: var(--codice-sfondo);
+  color: var(--codice-testo);
+  border-radius: 14px;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 16px;
+  line-height: 1.5;
+}
+pre.codice .commento { color: #ffd479; }
+.evidenzia { outline: 4px solid #ffd23f; outline-offset: 4px; transition: outline 0.3s; }
+.bottone-livello {
+  font-family: var(--font-titoli);
+  font-size: 21px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  margin: 24px 0 8px;
+  background: var(--colore);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--colore) 60%, #000);
+}
+.attrezzi { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.torna { display: inline-block; margin-bottom: 18px; color: var(--colore); font-weight: 700; text-decoration: none; }

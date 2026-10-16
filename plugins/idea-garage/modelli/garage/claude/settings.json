@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(npx playwright *)",
+      "Bash(node motore/*)",
+      "Bash(node *motore/*)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(ls *)",
+      "Bash(git status*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git tag *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git show *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git branch *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr status*)",
+      "Bash(open *)",
+      "Bash(xdg-open *)",
+      "Bash(start *)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh repo delete *)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean *)"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+test-results/
+playwright-report/
+_site/
+.DS_Store
+# richiesta di pubblicazione in attesa: vive solo su questo computer
+giochi/*/richiesta.json
+# l'elenco dei progetti si rigenera da solo
+giochi/indice.json

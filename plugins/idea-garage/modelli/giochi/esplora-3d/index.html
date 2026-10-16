@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITOLO}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #1d1b22; font-family: "Baloo 2", system-ui, sans-serif; }
+    #tela { width: 100vw; height: 100vh; display: block; touch-action: none; outline: none; }
+    #punteggio { position: fixed; top: 12px; left: 16px; color: #fff; font-size: 28px; text-shadow: 0 2px 0 rgba(0,0,0,.4); pointer-events: none; }
+    #aiuto { position: fixed; bottom: 12px; left: 16px; color: #fff; font-size: 18px; opacity: .85; text-shadow: 0 2px 0 rgba(0,0,0,.4); pointer-events: none; }
+    #torna { position: fixed; top: 12px; right: 16px; color: #fff; font-size: 20px; text-decoration: none; opacity: .85; }
+    .messaggio { position: fixed; inset: 0; display: grid; place-items: center; text-align: center; background: rgba(20,16,40,.55); color: #fff; }
+    .messaggio[hidden] { display: none; }
+    .messaggio h2 { font-size: clamp(40px, 9vw, 96px); margin: 0; text-shadow: 0 4px 0 rgba(0,0,0,.35); }
+    .messaggio button { font-family: inherit; font-size: 28px; border: none; border-radius: 999px; padding: 8px 28px; background: #ffd23f; color: #4a3500; cursor: pointer; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <canvas id="tela"></canvas>
+  <div id="punteggio" aria-live="polite">💎 0</div>
+  <div id="aiuto">{{TESTO_TASTI}}</div>
+  <a id="torna" href="../../">🏠</a>
+  <div class="messaggio" id="vittoria" hidden>
+    <div><h2>{{TESTO_VITTORIA}}</h2><button type="button" data-ricomincia>{{TESTO_ANCORA}}</button></div>
+  </div>
+  <div class="messaggio" id="sconfitta" hidden>
+    <div><h2>{{TESTO_SCONFITTA}}</h2><button type="button" data-ricomincia>{{TESTO_RIPROVA}}</button></div>
+  </div>
+  <script src="libs/babylon.js"></script>
+  <script src="gioco.js"></script>
+</body>
+</html>

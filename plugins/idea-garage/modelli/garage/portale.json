@@ -1,0 +1,14 @@
+{
+  "nome": "{{NOME_PORTALE}}",
+  "colore": "{{COLORE}}",
+  "mascotte": "{{MASCOTTE}}",
+  "lingua": "{{LINGUA}}",
+  "profilo": "{{PROFILO}}",
+  "progetto_attivo": null,
+  "esperienza": {
+    "progetti_completati": 0,
+    "domande_viste": [],
+    "decidi_tu_di_fila": 0
+  },
+  "versione_motore": "{{VERSIONE}}"
+}

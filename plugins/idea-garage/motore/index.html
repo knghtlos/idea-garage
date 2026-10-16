@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Idea Garage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="motore/portale.css">
+  <link rel="stylesheet" href="tema.css">
+</head>
+<body>
+  <!-- Motore del portale Idea Garage: non modificare questo file a mano.
+       Le personalizzazioni vanno in portale.json e tema.css. -->
+  <header class="testata">
+    <div class="mascotte" id="mascotte" aria-hidden="true">🚗</div>
+    <div>
+      <h1 id="nome-portale">Idea Garage</h1>
+      <p class="sottotitolo" id="sottotitolo"></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="griglia" id="griglia" aria-live="polite"></section>
+    <section class="vuoto" id="vuoto" hidden>
+      <div class="vuoto-icona" aria-hidden="true">✨</div>
+      <p id="vuoto-testo"></p>
+    </section>
+  </main>
+
+  <footer class="piede">
+    <span id="piede-testo"></span>
+  </footer>
+
+  <script src="motore/portale.js"></script>
+</body>
+</html>

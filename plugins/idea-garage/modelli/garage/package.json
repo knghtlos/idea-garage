@@ -1,0 +1,17 @@
+{
+  "name": "{{SLUG_PORTALE}}",
+  "private": true,
+  "type": "module",
+  "description": "Il mio Idea Garage",
+  "scripts": {
+    "garage": "node motore/server.mjs . 4321",
+    "indice": "node motore/genera-indice.mjs .",
+    "collauda": "playwright test",
+    "sito": "node motore/costruisci-sito.mjs ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "babylonjs": "^8.0.0",
+    "phaser": "^3.90.0"
+  }
+}
