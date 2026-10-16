@@ -32,7 +32,7 @@ Then, one short sentence each:
 - 🎮 **Provo**: `/prova-il-gioco` gioco a quello che ho fatto
 - 🔧 **Sistemo**: `/aggiusta` qualcosa non va · `/torna-indietro` torno a un salvataggio
 - 🔍 **Scopro**: `/come-funziona` come è fatto dietro le quinte
-- 🌍 **Mostro a tutti**: `/pubblica` con il via libera del grande
+- 🌍 **Mostro a tutti** (se vuoi, con il grande): `/esporta` un pacchetto da portare dove vuoi · `/pubblica` un link su internet
 - 🙋 **Mi serve aiuto**: scrivi "chiama un grande"
 
 **en**
@@ -40,7 +40,7 @@ Then, one short sentence each:
 - 🎮 **Try**: `/try-game` play what I made
 - 🔧 **Fix**: `/fix` something's wrong · `/go-back` back to a save
 - 🔍 **Discover**: `/how-it-works` behind the scenes
-- 🌍 **Show everyone**: `/publish` with the grown-up's OK
+- 🌍 **Show everyone** (if you want, with the grown-up): `/export-game` a package to take anywhere · `/publish` a link on the internet
 - 🙋 **I need help**: type "call a grown-up"
 
 End with: "Puoi anche scrivermi cosa vuoi fare con parole tue!" / "You can also just tell me in your own words!"

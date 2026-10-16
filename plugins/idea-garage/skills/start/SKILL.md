@@ -34,9 +34,10 @@ talking to the grown-up: normal, clear adult language.
 
 ## 2. Where (grown-up or adult)
 
-Explain in 2-3 short lines what will happen: a folder "garage" with the games and a small web portal;
-safety rules so the child never sees technical permission prompts; nothing goes online without the
-grown-up's approval on GitHub.
+Explain in 2-3 short lines what will happen: a folder "garage" with the games and a small page on the
+computer to find and play them ("il mio garage"); safety rules so the child never sees technical
+permission prompts. Everything stays on the computer: exporting or publishing a game is optional,
+later, and always with the grown-up.
 
 The garage is the current folder if it is empty (or nearly), otherwise propose a new subfolder named
 after the portal (step 3). Ask for confirmation of the folder.
@@ -45,7 +46,6 @@ Check what's needed, and report in one line each only if missing:
 - Node.js ≥ 18 (`node -v`). If missing: point to https://nodejs.org and stop.
 - git (`git --version`) and its identity (`git config user.name`). If missing identity, ask the grown-up
   to set it (`git config --global user.name "..."` / `user.email`), never invent one.
-- GitHub CLI `gh` is only needed later for publishing; just mention it if missing.
 
 ## 3. Three fun questions (to the child, or the adult)
 
@@ -71,7 +71,8 @@ robot's browser; tell them it takes a minute ☕). If the browser download fails
 will not work until it's installed and continue.
 
 Tell the grown-up, in 3 lines: settings are in `.claude/settings.json`; the child can now type `/nuovo-gioco`
-(or just "ciao" in a new session); for publishing they'll need a GitHub account (theirs; GitHub requires 13+).
+(or just "ciao" in a new session); games can later be exported as a zip (`/esporta`) or published online
+(`/pubblica`, needs their GitHub account; GitHub requires 13+), but neither is required.
 Important: the permissions only apply when Claude is started **inside the garage folder**, and only
 after the folder is trusted: the first time Claude opens there, the grown-up must accept the
 "trust this folder" question. Until then the child would still see permission prompts. If you are not

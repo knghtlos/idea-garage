@@ -78,14 +78,18 @@ also just type the number.
 |---|---|
 | card approved | nothing: building starts by itself |
 | build + test robot OK | `/prova-il-gioco` (it opens by itself; ask "Com'è andata?") |
-| trying the game | `/migliora` · `/aggiusta` · `/pubblica` |
+| trying the game | `/migliora` · `/aggiusta` · (only if they want to show it) `/esporta` or `/pubblica` |
 | `/migliora` or `/aggiusta` done | `/prova-il-gioco` |
 | `/pubblica` sent | "vai a vederlo nel portale quando arriva" · `/come-funziona` · `/nuovo-gioco` |
+| `/esporta` done | `/nuovo-gioco` · `/migliora` · `/come-funziona` |
 | `/come-funziona` | "vuoi capire un altro pezzo?" · `/migliora` |
 | `/torna-indietro` | `/prova-il-gioco` |
 
 The person may answer in their own words instead of using commands: understand the intent and
 start the right skill yourself (e.g. "il drago passa attraverso le nuvole" → fix).
+"Voglio farlo vedere ai miei amici" → ask how, as a choice: "1. 🔗 Con un link su internet (serve il tuo grande)
+2. 📦 Con un pacchetto da caricare su un sito", then run publish or export. Never push either: keeping
+games on the computer is perfectly fine.
 
 ## Remembering between sessions
 
@@ -108,6 +112,7 @@ The SessionStart context reads both to greet them next time.
 |---|---|---|
 | Tone | short, warm, emoji, celebrations | simple, friendly, not childish; no "grande" |
 | Big requests | split immediately into a first small piece | accept bigger steps, still incremental |
-| Publishing | request approved by the grown-up on GitHub | publishes after a confirmation |
+| Exporting | with the grown-up there | after a confirmation |
+| Publishing (optional) | request approved by the grown-up on GitHub | publishes after a confirmation |
 | Privacy check | blocks real names/places, proposes the nickname | warns, lets them decide |
 | How it works page | 3 levels, basic glossary | may go deeper, more code |

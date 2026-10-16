@@ -55,7 +55,7 @@ const righe = [
     : '',
   `RULES: before your first reply, read ${PLUGIN}/riferimenti/tono.md and follow it for the whole session (language, short sentences, one question at a time, always a next step).`,
   `GREETING: when the user writes their first message (even just "ciao"/"hi"), unless it is already a clear request, greet them as described in the "Greeting" section of the skill idea-garage:help-me, using the news above (projects waiting for the OK, the active project and "where we were").`,
-  `Understand requests in plain words and start the right skill yourself: new idea → idea-garage:new-game; try → idea-garage:try-game; add/change → idea-garage:improve; something broken → idea-garage:fix; undo → idea-garage:go-back; curiosity about how it's made → idea-garage:how-it-works; show the world → idea-garage:publish; lost or stuck → idea-garage:help-me.`
+  `Understand requests in plain words and start the right skill yourself: new idea → idea-garage:new-game; try → idea-garage:try-game; add/change → idea-garage:improve; something broken → idea-garage:fix; undo → idea-garage:go-back; curiosity about how it's made → idea-garage:how-it-works; share it as a file/package → idea-garage:export; put it online → idea-garage:publish (both optional; if unclear, ask which); lost or stuck → idea-garage:help-me.`
 ].filter(Boolean);
 
 rispondi(righe.join('\n'));

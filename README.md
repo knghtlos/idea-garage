@@ -7,8 +7,12 @@ anche da solo, di creare i suoi videogiochi raccontandoli. Funziona anche per qu
 programmato.
 
 Il bambino racconta l'idea, risponde a qualche domanda divertente, approva la **carta del gioco** e Claude
-costruisce il gioco, lo fa provare a un **robot collaudatore** e lo apre nel browser. Ogni gioco finisce nel
-**portale** personale del bambino, una pagina web con tutte le sue creazioni.
+costruisce il gioco, lo fa provare a un **robot collaudatore** e lo apre nel browser. Ogni gioco si ritrova in
+**il mio garage**, una pagina sul computer con tutte le sue creazioni.
+
+Il plugin serve a **creare in fretta giochi e piccole app che funzionano**. Dove vanno poi è una scelta:
+possono restare sul computer, diventare un pacchetto zip da caricare dove si vuole, oppure andare su internet.
+Niente di tutto questo è obbligatorio.
 
 ## Come funziona
 
@@ -16,7 +20,7 @@ costruisce il gioco, lo fa provare a un **robot collaudatore** e lo apre nel bro
 /nuovo-gioco → domande del detective → carta del gioco ("Ti piace?")
    → costruzione (automatica) → robot collaudatore → /prova-il-gioco
    → /migliora (la carta cambia) · /aggiusta (la carta resta) · /torna-indietro
-   → /pubblica (con il via libera del grande) → il gioco compare nel portale
+   → se vuoi mostrarlo: /esporta (un pacchetto zip) oppure /pubblica (un link su internet)
 ```
 
 | Comando | Cosa fa |
@@ -27,7 +31,8 @@ costruisce il gioco, lo fa provare a un **robot collaudatore** e lo apre nel bro
 | `/aggiusta` | Sistema quello che non va come avevamo deciso |
 | `/torna-indietro` | Torna a un salvataggio, senza perdere niente |
 | `/come-funziona` | Pagina "Come l'ho fatto": foto, codice vero e parole difficili spiegate |
-| `/pubblica` | Manda al grande una richiesta di via libera su GitHub |
+| `/esporta` | Facoltativo: crea uno zip autonomo da caricare su itch.io, su un sito o sulla piattaforma della scuola |
+| `/pubblica` | Facoltativo: mette il gioco su internet, in un portale su GitHub Pages, con il via libera del grande |
 | `/aiuto` | Tutti i comandi, oppure "chiama un grande" |
 
 Non serve ricordarli: basta scrivere "ciao" e Claude propone da dove ripartire, oppure dire con parole proprie
@@ -41,19 +46,21 @@ cosa si vuole fare.
 - **Il motore del portale e le scelte del bambino sono separati.** Il plugin aggiorna il motore;
   le personalizzazioni vivono in `portale.json` e `tema.css` e non si perdono mai.
 - **Sicurezza**: una guardia blocca tutto quello che non deve succedere (lavorare fuori dal garage, toccare il motore,
-  scaricare cose, cancellare progetti, approvare pubblicazioni). Niente va online senza il via libera dell'adulto.
+  scaricare cose, cancellare progetti, approvare pubblicazioni). Esportare e pubblicare si fanno sempre con l'adulto,
+  dopo un controllo privacy.
 - **Personaggi famosi**: il gioco "tipo Mario" si può fare tutto, con le stesse meccaniche; l'eroe è inventato dal bambino.
 
 ## Attrezzi
 
 - **Phaser** per i giochi 2D, **Babylon.js** per i mondi 3D, HTML semplice per quiz e piccole app.
 - **Playwright** per il robot collaudatore.
-- **GitHub Pages** per il portale pubblico: escono solo i giochi approvati, mai bozze, test o note tecniche.
+- Facoltativo: **GitHub Pages** per un portale pubblico. Escono solo i giochi approvati, mai bozze, test o note tecniche.
 
 ## Installazione (per l'adulto)
 
 Servono [Claude Code](https://code.claude.com), [Node.js](https://nodejs.org) 18 o superiore e git.
-Per pubblicare serve anche la [GitHub CLI](https://cli.github.com) con un account GitHub dell'adulto.
+Solo se un giorno si vuole pubblicare su internet serve anche la [GitHub CLI](https://cli.github.com) con un
+account GitHub dell'adulto.
 
 ```
 /plugin marketplace add knghtlos/idea-garage
@@ -69,8 +76,8 @@ portale, colore, mascotte).
 
 ## Età e account
 
-Claude si usa con l'account dell'adulto. GitHub richiede almeno 13 anni, quindi il repository e le approvazioni
-vivono sull'account dell'adulto. Il portale pubblico usa un nickname, mai nome e cognome.
+Claude si usa con l'account dell'adulto. Se si pubblica, GitHub richiede almeno 13 anni, quindi il repository e le
+approvazioni vivono sull'account dell'adulto. Tutto quello che esce dal computer usa un nickname, mai nome e cognome.
 
 ## Struttura del repository
 
@@ -78,7 +85,7 @@ vivono sull'account dell'adulto. Il portale pubblico usa un nickname, mai nome e
 .claude-plugin/marketplace.json      il marketplace (questo repo)
 plugins/idea-garage/
   .claude-plugin/plugin.json
-  skills/        start, new-game, try-game, improve, fix, go-back, how-it-works, publish, help-me
+  skills/        start, new-game, try-game, improve, fix, go-back, how-it-works, export, publish, help-me
   agents/        costruttore (builder), collaudatore (test robot)
   hooks/         contesto a inizio sessione, guardia del garage
   scripts/       prepara-garage, guardia, contesto
@@ -111,18 +118,19 @@ Licenza: MIT.
 create video games by telling them. It works just as well for any adult who has never programmed.
 
 The child tells the idea, answers a few fun questions, approves the **game card**, and Claude builds the game,
-has a **test robot** play it, and opens it in the browser. Every game lands in the child's own **portal**,
-a web page with all their creations.
+has a **test robot** play it, and opens it in the browser. Every game shows up in **my garage**, a page on the
+computer with all their creations. Games can stay there, become a zip to upload anywhere (`/export-game`), or go
+online (`/publish`): all optional.
 
 ```
 /new-game → detective questions → game card ("Do you like it?")
    → building (automatic) → test robot → /try-game
    → /improve (the card changes) · /fix (the card stays) · /go-back
-   → /publish (with the grown-up's OK) → the game shows up in the portal
+   → to show it, if you want: /export-game (a zip) or /publish (a link on the internet)
 ```
 
-Commands in English: `/new-game`, `/try-game`, `/improve`, `/fix`, `/go-back`, `/how-it-works`, `/publish`,
-`/help-me`. Or just say "hi" and Claude suggests where to pick up.
+Commands in English: `/new-game`, `/try-game`, `/improve`, `/fix`, `/go-back`, `/how-it-works`, `/export-game`,
+`/publish`, `/help-me`. Or just say "hi" and Claude suggests where to pick up.
 
 **Install** (grown-up): `/plugin marketplace add knghtlos/idea-garage`, `/plugin install idea-garage@idea-garage`,
 then `/idea-garage:start` in an empty folder. The first time Claude opens in the garage folder, accept the

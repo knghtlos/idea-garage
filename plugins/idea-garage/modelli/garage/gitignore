@@ -7,3 +7,5 @@ _site/
 giochi/*/richiesta.json
 # l'elenco dei progetti si rigenera da solo
 giochi/indice.json
+# pacchetti esportati: si rifanno quando servono
+esportati/

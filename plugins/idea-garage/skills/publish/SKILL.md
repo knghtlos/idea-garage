@@ -1,6 +1,6 @@
 ---
 name: publish
-description: Publish a finished game of the Idea Garage to the person's web portal on GitHub Pages. For a child, this sends a request for the OK that the grown-up approves on GitHub; for an adult, it publishes after a confirmation. Use for "pubblica", "fallo vedere ai miei amici", "metti online", "publish", "share it".
+description: Optionally publish a finished game of the Idea Garage online, in a web portal on GitHub Pages (for a file to upload elsewhere, use export instead). For a child, this sends a request for the OK that the grown-up approves on GitHub; for an adult, it publishes after a confirmation. Use for "pubblica", "fallo vedere ai miei amici", "metti online", "publish", "share it".
 argument-hint: "[project]"
 ---
 
@@ -9,6 +9,9 @@ argument-hint: "[project]"
 > `${CLAUDE_PLUGIN_ROOT}` is the Idea Garage plugin folder. If it is not expanded, use the "Plugin root" path from the session context. Commands below run from the garage folder.
 
 Follow `${CLAUDE_PLUGIN_ROOT}/riferimenti/tono.md` and `salvataggi-e-sicurezza.md`.
+
+Publishing is optional: games always stay playable on the computer. If the person only wants a file
+(for itch.io, their own site, a school platform), use `idea-garage:export` instead.
 
 ## 1. Checks before asking anything
 

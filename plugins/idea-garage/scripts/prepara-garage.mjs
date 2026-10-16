@@ -17,6 +17,7 @@ const PLUGIN = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const VERSIONE = JSON.parse(fs.readFileSync(path.join(PLUGIN, '.claude-plugin', 'plugin.json'), 'utf8')).version;
 
 // Comandi brevi nella lingua del garage: ognuno passa la parola alla skill vera del plugin.
+// Mai usare nomi di comandi già presenti in Claude Code (help, export, clear, ...): li sostituirebbero.
 const SCORCIATOIE = {
   'new-game': { it: ['nuovo-gioco', 'Inizia un nuovo gioco (o una nuova idea) nel garage'], en: ['new-game', 'Start a new game (or a new idea) in the garage'] },
   'try-game': { it: ['prova-il-gioco', 'Apri il gioco nel browser per provarlo'], en: ['try-game', 'Open the game in the browser to try it'] },
@@ -24,7 +25,8 @@ const SCORCIATOIE = {
   fix: { it: ['aggiusta', 'Qualcosa nel gioco non va come avevamo deciso'], en: ['fix', 'Something in the game does not work as we decided'] },
   'go-back': { it: ['torna-indietro', 'Torna a un salvataggio precedente del gioco'], en: ['go-back', 'Go back to an earlier save of the game'] },
   'how-it-works': { it: ['come-funziona', 'Scopri come è fatto il tuo gioco, dietro le quinte'], en: ['how-it-works', 'Find out how your game is made, behind the scenes'] },
-  publish: { it: ['pubblica', 'Fai vedere il gioco al mondo (con il via libera del grande)'], en: ['publish', 'Show your game to the world (with the grown-up\'s OK)'] },
+  export: { it: ['esporta', 'Prepara un pacchetto del gioco da portare dove vuoi (itch.io, un sito, la scuola)'], en: ['export-game', 'Make a package of your game to take anywhere (itch.io, a website, school)'] },
+  publish: { it: ['pubblica', 'Metti il gioco su internet, se vuoi (con il via libera del grande)'], en: ['publish', 'Show your game to the world (with the grown-up\'s OK)'] },
   'help-me': { it: ['aiuto', 'Vedi tutti i comandi, oppure chiama un grande'], en: ['help-me', 'See all the commands, or call a grown-up'] }
 };
 

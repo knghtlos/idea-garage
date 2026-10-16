@@ -24,7 +24,7 @@ Follow `${CLAUDE_PLUGIN_ROOT}/riferimenti/tono.md`.
 5. When they come back, ask openly: "Com'è andata?" / "How did it go?"
 6. **Route from the answer**, without asking them to pick a command:
    - liked it, nothing to change → offer a save if not saved (`salvataggi-e-sicurezza.md`), then the
-     next step: `/migliora` · `/pubblica` · `/come-funziona`.
+     next step: `/migliora` · `/come-funziona`, and only if they want to show it: `/esporta` · `/pubblica`.
    - something doesn't work as decided ("passa attraverso le nuvole", "non salta") → `idea-garage:fix`.
    - wants something new or different ("voglio i nemici", "più veloce") → `idea-garage:improve`.
    - it's too hard / too easy → `idea-garage:improve` (it's a rule change, not a bug).
