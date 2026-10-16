@@ -52,7 +52,7 @@ cosa si vuole fare.
 
 ## La vetrina
 
-La cartella `sito/` è una vetrina pubblica del progetto, su **https://knghtlos.github.io/idea-garage/**: racconta
+La cartella `sito/` è una vetrina pubblica del progetto (pubblicata dal ramo `gh-pages`), su **https://knghtlos.github.io/idea-garage/**: racconta
 come nasce un gioco e raccoglie i giochi creati, giocabili nel browser. Per aggiungerne uno, esportalo con
 `/esporta` e poi `node sito/aggiungi-gioco.mjs <zip> --autore "Leo, 8 anni"` (sempre un nickname).
 

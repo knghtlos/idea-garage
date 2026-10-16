@@ -1,5 +1,5 @@
-# Pubblica la vetrina di Idea Garage (cartella sito/) su GitHub Pages.
-# Una volta sola: Settings → Pages → Source: "GitHub Actions".
+# Pubblica la vetrina di Idea Garage (cartella sito/) sul ramo gh-pages,
+# da cui GitHub Pages serve https://knghtlos.github.io/idea-garage/
 name: Vetrina
 
 on:
@@ -9,27 +9,25 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: vetrina
   cancel-in-progress: true
 
 jobs:
   pubblica:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Togli gli script di servizio dal sito
-        run: rm -f sito/aggiungi-gioco.mjs && touch sito/.nojekyll
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: sito
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - name: Aggiorna il ramo gh-pages con la cartella sito/
+        run: |
+          rm -f sito/aggiungi-gioco.mjs
+          touch sito/.nojekyll
+          cd sito
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Vetrina aggiornata da ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
