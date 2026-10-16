@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saltanuvole</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; height: 100%; background: #1d1b22; overflow: hidden; }
+    body { display: grid; place-items: center; font-family: "Baloo 2", system-ui, sans-serif; }
+    #contenitore { position: relative; width: 100vw; height: 100vh; }
+    #punteggio {
+      position: absolute; top: 12px; left: 16px; z-index: 2;
+      color: #fff; font-size: 28px; text-shadow: 0 2px 0 rgba(0,0,0,.4); pointer-events: none;
+    }
+    .messaggio {
+      position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; text-align: center;
+      background: rgba(20, 16, 40, .55); color: #fff;
+    }
+    .messaggio[hidden] { display: none; }
+    .messaggio h2 { font-size: clamp(40px, 9vw, 96px); margin: 0; text-shadow: 0 4px 0 rgba(0,0,0,.35); }
+    .messaggio button {
+      font-family: inherit; font-size: 28px; border: none; border-radius: 999px; padding: 8px 28px;
+      background: #ffd23f; color: #4a3500; cursor: pointer; margin-top: 12px;
+    }
+    #torna { position: absolute; top: 12px; right: 16px; z-index: 2; color: #fff; font-size: 20px; text-decoration: none; opacity: .85; }
+  </style>
+</head>
+<body>
+  <div id="contenitore">
+    <div id="punteggio" aria-live="polite">⭐ 0</div>
+    <div class="messaggio" id="vittoria" hidden>
+      <div><h2>Hai vinto! 🎉</h2><button type="button" data-ricomincia>Gioca ancora</button></div>
+    </div>
+    <div class="messaggio" id="sconfitta" hidden>
+      <div><h2>Oh no! 😮</h2><button type="button" data-ricomincia>Riprova</button></div>
+    </div>
+  </div>
+  <script src="libs/phaser.min.js"></script>
+  <script src="gioco.js"></script>
+</body>
+</html>
