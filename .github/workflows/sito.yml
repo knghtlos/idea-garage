@@ -1,0 +1,35 @@
+# Pubblica la vetrina di Idea Garage (cartella sito/) su GitHub Pages.
+# Una volta sola: Settings → Pages → Source: "GitHub Actions".
+name: Vetrina
+
+on:
+  push:
+    branches: [main]
+    paths: ['sito/**', '.github/workflows/sito.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  pubblica:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Togli gli script di servizio dal sito
+        run: rm -f sito/aggiungi-gioco.mjs && touch sito/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: sito
+      - id: deploy
+        uses: actions/deploy-pages@v4

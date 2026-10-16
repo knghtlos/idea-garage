@@ -50,6 +50,12 @@ cosa si vuole fare.
   dopo un controllo privacy.
 - **Personaggi famosi**: il gioco "tipo Mario" si può fare tutto, con le stesse meccaniche; l'eroe è inventato dal bambino.
 
+## La vetrina
+
+La cartella `sito/` è una vetrina pubblica del progetto, su **https://knghtlos.github.io/idea-garage/**: racconta
+come nasce un gioco e raccoglie i giochi creati, giocabili nel browser. Per aggiungerne uno, esportalo con
+`/esporta` e poi `node sito/aggiungi-gioco.mjs <zip> --autore "Leo, 8 anni"` (sempre un nickname).
+
 ## Attrezzi
 
 - **Phaser** per i giochi 2D, **Babylon.js** per i mondi 3D, HTML semplice per quiz e piccole app.

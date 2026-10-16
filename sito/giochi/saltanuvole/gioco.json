@@ -1,0 +1,13 @@
+{
+  "titolo": "Saltanuvole",
+  "descrizione": "Un mostriciattolo che salta sulle nuvole e prende le stelle",
+  "tipo": "gioco",
+  "emoji": "🐉",
+  "archetipo": "salta-e-corri",
+  "attrezzo": "phaser",
+  "modello": "salta-e-corri",
+  "creato": "2026-10-16T09:28:57.723Z",
+  "aggiornato": "2026-10-16T09:28:57.723Z",
+  "copertina": "copertina.png",
+  "salvataggi": []
+}

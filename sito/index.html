@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Idea Garage</title>
+  <meta name="description" content="Un bambino racconta un'idea, Claude costruisce il gioco, un robot lo prova e il bambino ci gioca. Un plugin per Claude Code.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stile.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="salta" href="#principale" data-t="salta">Vai al contenuto</a>
+
+  <header class="testata">
+    <a class="marchio" href="#" aria-label="Idea Garage">
+      <span class="marchio-chiave" aria-hidden="true">🔧</span>
+      <span>Idea Garage</span>
+    </a>
+    <nav class="lingue" aria-label="Lingua / Language">
+      <button type="button" data-lingua="it" aria-pressed="true">IT</button>
+      <button type="button" data-lingua="en" aria-pressed="false">EN</button>
+    </nav>
+  </header>
+
+  <main id="principale">
+    <section class="apertura">
+      <div class="apertura-testo">
+        <h1 data-t="titolo">Racconta un'idea. Gioca il tuo gioco.</h1>
+        <p class="apertura-sotto" data-t="sotto">Un bambino di 8 anni descrive il gioco che ha in testa. Claude fa qualche domanda, prepara la carta del gioco, lo costruisce e lo fa provare a un robot. Pochi minuti dopo, il bambino ci gioca.</p>
+        <div class="azioni">
+          <a class="bottone" href="#giochi" data-t="provaUnGioco">Prova un gioco</a>
+          <a class="bottone secondario" href="#grandi" data-t="perIGrandi">Per i grandi: come si installa</a>
+        </div>
+      </div>
+
+      <figure class="carta-grande" aria-labelledby="carta-titolo">
+        <span class="nastro nastro-sx" aria-hidden="true"></span>
+        <span class="nastro nastro-dx" aria-hidden="true"></span>
+        <div class="carta-palco"><img src="giochi/saltanuvole/assets/eroe.svg" alt="" width="120" height="120"></div>
+        <div class="carta-corpo">
+          <p class="carta-tipo" data-t="cartaTipo">Carta del gioco</p>
+          <h2 id="carta-titolo" data-t="cartaTitolo">Saltanuvole</h2>
+          <blockquote class="carta-frase" data-t="cartaFrase">«Un mostriciattolo che salta sulle nuvole e prende le stelle!»</blockquote>
+          <ul class="carta-regole">
+            <li><span aria-hidden="true">⬆️</span> <span data-t="regola1">Premi la freccia su e salta.</span></li>
+            <li><span aria-hidden="true">⭐</span> <span data-t="regola2">Prendi 10 stelle per vincere.</span></li>
+            <li><span aria-hidden="true">❤️</span> <span data-t="regola3">Se cadi giù, perdi una vita.</span></li>
+          </ul>
+          <a class="bottone piccolo" href="giochi/saltanuvole/" data-t="gioca">Gioca</a>
+        </div>
+        <figcaption class="post-it" data-t="postit">Il robot collaudatore ha controllato ogni regola della carta ✓</figcaption>
+      </figure>
+    </section>
+
+    <section class="banco" aria-labelledby="come-titolo">
+      <h2 id="come-titolo" data-t="comeTitolo">Come nasce un gioco</h2>
+      <ol class="stazioni">
+        <li>
+          <span class="stazione-numero" aria-hidden="true">1</span>
+          <h3 data-t="s1t">Racconti l'idea</h3>
+          <p data-t="s1p">Anche una frase sola, scritta o detta a voce.</p>
+        </li>
+        <li>
+          <span class="stazione-numero" aria-hidden="true">2</span>
+          <h3 data-t="s2t">Il detective fa qualche domanda</h3>
+          <p data-t="s2p">Una alla volta, con risposte da scegliere. Chi è l'eroe? Come si vince?</p>
+        </li>
+        <li>
+          <span class="stazione-numero" aria-hidden="true">3</span>
+          <h3 data-t="s3t">Approvi la carta del gioco</h3>
+          <p data-t="s3p">Regole in poche frasi e l'eroe già disegnato. Ti piace? Allora si parte.</p>
+        </li>
+        <li>
+          <span class="stazione-numero" aria-hidden="true">4</span>
+          <h3 data-t="s4t">Claude costruisce</h3>
+          <p data-t="s4p">Ogni regola della carta diventa una prova automatica, poi il gioco.</p>
+        </li>
+        <li>
+          <span class="stazione-numero" aria-hidden="true">5</span>
+          <h3 data-t="s5t">Il robot lo prova</h3>
+          <p data-t="s5p">Gioca da solo e controlla che il gioco faccia quello che hai chiesto.</p>
+        </li>
+        <li>
+          <span class="stazione-numero" aria-hidden="true">6</span>
+          <h3 data-t="s6t">Giochi e lo fai crescere</h3>
+          <p data-t="s6p">"Voglio i nemici!" e si ricomincia dal giro piccolo.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="giochi" class="galleria" aria-labelledby="giochi-titolo">
+      <div class="galleria-testa">
+        <h2 id="giochi-titolo" data-t="giochiTitolo">I giochi</h2>
+        <p data-t="giochiSotto">Giocabili qui, nel browser. Per ora ci sono i due esempi che il plugin usa come punto di partenza.</p>
+      </div>
+      <div class="griglia" id="griglia"></div>
+    </section>
+
+    <section id="grandi" class="grandi" aria-labelledby="grandi-titolo">
+      <h2 id="grandi-titolo" data-t="grandiTitolo">Per i grandi</h2>
+      <div class="colonne">
+        <div>
+          <h3 data-t="installaTitolo">Cosa serve</h3>
+          <p data-t="installaP">Claude Code, Node.js 18 o più recente e git. Poi, in Claude Code:</p>
+          <pre class="codice"><code>/plugin marketplace add knghtlos/idea-garage
+/plugin install idea-garage@idea-garage</code></pre>
+          <p data-t="installaP2">In una cartella vuota scrivi <code>/idea-garage:start</code>. La prima volta accetta la domanda "ti fidi di questa cartella?".</p>
+        </div>
+        <div>
+          <h3 data-t="sicuroTitolo">Sicuro per un bambino</h3>
+          <p data-t="sicuroP">Una guardia impedisce di lavorare fuori dal garage, scaricare cose da internet o cancellare i giochi. Il bambino non vede richieste tecniche e niente esce dal computer senza un adulto.</p>
+        </div>
+        <div>
+          <h3 data-t="doveTitolo">Dove finiscono i giochi</h3>
+          <p data-t="doveP">Restano sul computer, nella pagina "il mio garage". Se vuoi, <code>/esporta</code> crea uno zip da caricare su un sito, e <code>/pubblica</code> li mette su internet con il tuo via libera.</p>
+        </div>
+      </div>
+      <div class="aggiungi">
+        <h3 data-t="aggiungiTitolo">Aggiungere un gioco a questa vetrina</h3>
+        <p data-t="aggiungiP">Esporta il gioco con <code>/esporta</code>, poi dalla cartella di questo repository:</p>
+        <pre class="codice"><code>node sito/aggiungi-gioco.mjs esportati/il-mio-gioco.zip --autore "Leo, 8 anni"</code></pre>
+        <p data-t="aggiungiP2">Usa un nickname, mai nome e cognome.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="piede">
+    <p data-t="piede">Idea Garage è un plugin per Claude Code, con licenza MIT.</p>
+    <a href="https://github.com/knghtlos/idea-garage">GitHub</a>
+  </footer>
+
+  <script src="sito.js"></script>
+</body>
+</html>

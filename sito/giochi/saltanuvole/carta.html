@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saltanuvole</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="motore/pagine.css">
+  <style>:root { --colore: #00b894; }</style>
+</head>
+<body>
+  <!-- CARTA DEL GIOCO. Il costruttore la riempie dalle risposte del detective.
+       L'eroe mostrato qui è LO STESSO FILE che userà il gioco (assets/eroe.svg). -->
+  <main class="pagina">
+    <div class="carta-testata">
+      <div class="palco" aria-hidden="true"><img src="assets/eroe.svg" alt=""></div>
+      <div>
+        <h1>Saltanuvole</h1>
+        <p>Un mostriciattolo che salta sulle nuvole e prende le stelle!</p>
+      </div>
+    </div>
+
+    <h2>Le regole</h2>
+    <ul class="regole">
+      <!-- Una regola per riga, frasi corte. Esempio:
+      <li><span class="emoji">⬆️</span><span>Premi la freccia su e il mostriciattolo salta.</span></li> -->
+      <li><span class="emoji">⬆️</span><span>Premi la freccia su e il mostriciattolo salta.</span></li><li><span class="emoji">⭐</span><span>Prendi 10 stelle per vincere.</span></li><li><span class="emoji">🕳️</span><span>Se cadi giù, perdi una vita.</span></li><li><span class="emoji">❤️</span><span>Hai 3 vite.</span></li>
+    </ul>
+
+    <h2>I tasti</h2>
+    <div class="riquadro tasti"><kbd>←</kbd> <kbd>→</kbd> per correre, <kbd>↑</kbd> o <kbd>spazio</kbd> per saltare</div>
+  </main>
+</body>
+</html>
