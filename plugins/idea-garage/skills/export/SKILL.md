@@ -31,6 +31,19 @@ The script copies the game with its library, drawings and pages, leaves out test
 fixes the paths so nothing depends on the garage, and refuses if something still points outside.
 If it refuses, fix the project file it names (usually a link or path written by hand) and retry.
 
+## 2b. After-export command (only if the grown-up set one)
+
+If the output of `esporta.mjs` has `dopo_esportazione`, the garage also ran the grown-up's own command
+(for example: adding the game to their website). Never change or skip it, and never set one yourself.
+- `riuscito: true` → tell the child in one line what happened, in plain words, based on the command's output
+  (e.g. "Il pacchetto è partito per il sito! Il tuo grande deve solo dare il via libera 📨"). If the output
+  doesn't make it clear, just say "Il pacchetto è pronto e l'ho passato al tuo grande ✅".
+- `riuscito: false` → the zip is still fine. Tell the child kindly "Il pacchetto è pronto, ma il passaggio dopo
+  ha fatto i capricci: lo guarda il tuo grande". Write the command, its error lines and the zip path into
+  `AIUTO-PER-IL-GRANDE.md`. Don't retry or try to fix the grown-up's command.
+In that case skip step 3 below for the child (the grown-up already knows where the game goes), and keep only
+the next-step suggestions.
+
 ## 3. Tell them how to use it
 
 To the child: "Ecco il pacchetto di <titolo>! 📦 Il tuo grande sa dove trovarlo." Then, to the grown-up

@@ -1,7 +1,7 @@
 ---
 name: start
-description: Set up a new Idea Garage (the folder and web portal where someone's games live) with a grown-up, or update the engine of an existing garage. Use when the user runs it, or when another Idea Garage skill finds no garage in the current folder.
-argument-hint: "[--aggiorna]"
+description: Set up a new Idea Garage (the folder and web portal where someone's games live) with a grown-up, update the engine of an existing garage, or change the grown-up's garage settings ("impostazioni", e.g. a command to run after every export). Use when the user runs it, or when another Idea Garage skill finds no garage in the current folder.
+argument-hint: "[--aggiorna | impostazioni]"
 ---
 
 # Set up the garage
@@ -10,6 +10,25 @@ argument-hint: "[--aggiorna]"
 
 The plugin root is `${CLAUDE_PLUGIN_ROOT}` (the SessionStart context also states it). Read
 `${CLAUDE_PLUGIN_ROOT}/riferimenti/tono.md` first if you have not yet in this session.
+
+## Settings (`impostazioni` / `settings`): grown-up only
+
+When `$ARGUMENTS` is `impostazioni` or `settings`, or the grown-up asks to change garage settings, talk to
+the grown-up in plain adult language and skip everything else in this skill. Today there is one setting:
+
+**After every export** (`dopo_esportazione` in `portale.json`): a command the garage runs right after
+`/esporta` has made the zip. The plugin doesn't know what it does: it could add the game to the grown-up's
+own website, copy it to a shared drive, upload it somewhere. The command receives the zip's full path and the
+project name as arguments, and also as `IDEA_GARAGE_ZIP`, `IDEA_GARAGE_PROGETTO`, `IDEA_GARAGE_CARTELLA`.
+It runs in the garage folder; if it fails, `/esporta` still keeps the zip and reports the error.
+
+1. Show the current value (or "none") and ask what command they want, or whether to remove it.
+2. Never invent the command: it's theirs. If they describe what they want ("add it to my site in
+   ../my-site"), you may suggest a command, but they confirm it.
+3. Save it with (the grown-up approves this command; Claude cannot change this setting any other way):
+   `node "${CLAUDE_PLUGIN_ROOT}/scripts/prepara-garage.mjs" --cartella "<garage>" --dopo-esportazione "<command>"`
+   (an empty string `""` removes it). Then commit `🔧 Impostazioni del garage`.
+4. Offer a dry run on an existing project: `node motore/esporta.mjs <slug>` and show what the command printed.
 
 ## 0. Already a garage?
 

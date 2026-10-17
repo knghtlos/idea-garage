@@ -31,7 +31,7 @@ Niente di tutto questo è obbligatorio.
 | `/aggiusta` | Sistema quello che non va come avevamo deciso |
 | `/torna-indietro` | Torna a un salvataggio, senza perdere niente |
 | `/come-funziona` | Pagina "Come l'ho fatto": foto, codice vero e parole difficili spiegate |
-| `/esporta` | Facoltativo: crea uno zip autonomo da caricare su itch.io, su un sito o sulla piattaforma della scuola |
+| `/esporta` | Facoltativo: crea uno zip autonomo da caricare su itch.io, su un sito o sulla piattaforma della scuola. Se il grande lo imposta, dopo lo zip parte anche un suo comando (per esempio: aggiungere il gioco al suo sito) |
 | `/pubblica` | Facoltativo: mette il gioco su internet, in un portale su GitHub Pages, con il via libera del grande |
 | `/aiuto` | Tutti i comandi, oppure "chiama un grande" |
 
@@ -49,12 +49,6 @@ cosa si vuole fare.
   scaricare cose, cancellare progetti, approvare pubblicazioni). Esportare e pubblicare si fanno sempre con l'adulto,
   dopo un controllo privacy.
 - **Personaggi famosi**: il gioco "tipo Mario" si può fare tutto, con le stesse meccaniche; l'eroe è inventato dal bambino.
-
-## La vetrina
-
-La cartella `sito/` è una vetrina pubblica del progetto (pubblicata dal ramo `gh-pages`), su **https://knghtlos.github.io/idea-garage/**: racconta
-come nasce un gioco e raccoglie i giochi creati, giocabili nel browser. Per aggiungerne uno, esportalo con
-`/esporta` e poi `node sito/aggiungi-gioco.mjs <zip> --autore "Leo, 8 anni"` (sempre un nickname).
 
 ## Attrezzi
 
@@ -76,6 +70,10 @@ account GitHub dell'adulto.
 Poi, in una cartella vuota: `/idea-garage:start`. Il setup chiede chi userà il garage (un bambino con un grande,
 oppure un adulto), prepara cartella, portale, permessi e test, e fa tre domande divertenti al bambino (nome del
 portale, colore, mascotte).
+
+**Impostazioni del grande:** `/idea-garage:start impostazioni`. Oggi c'è una sola impostazione: un comando
+che parte dopo ogni `/esporta` e riceve il percorso dello zip. Il plugin non sa cosa fa: ognuno ci collega quello
+che vuole (il proprio sito, una cartella condivisa, un caricamento su itch.io). Solo l'adulto può cambiarlo.
 
 **Importante:** la prima volta che Claude si apre nella cartella del garage, l'adulto deve accettare la domanda
 "ti fidi di questa cartella?". Solo dopo valgono i permessi che evitano al bambino le richieste di approvazione.

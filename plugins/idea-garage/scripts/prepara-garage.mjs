@@ -6,6 +6,8 @@
 //        --nome "Il Garage di Leo" --colore "#6c5ce7" --mascotte "🐉"
 // Aggiornare il motore di un garage esistente (non tocca portale.json, tema.css, giochi/):
 //   node prepara-garage.mjs --cartella <dir> --aggiorna
+// Impostare (o togliere, con "") il comando che parte dopo ogni /esporta:
+//   node prepara-garage.mjs --cartella <dir> --dopo-esportazione "node ../mio-sito/ricevi-gioco.mjs"
 //
 // Scrive un riepilogo JSON su stdout.
 import fs from 'node:fs';
@@ -35,6 +37,7 @@ function argomenti() {
   const o = {};
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--aggiorna') o.aggiorna = true;
+    else if (a[i] === '--dopo-esportazione') o.dopoEsportazione = a[++i] ?? '';
     else if (a[i].startsWith('--')) o[a[i].slice(2)] = a[++i];
   }
   return o;
@@ -126,6 +129,22 @@ const o = argomenti();
 if (!o.cartella) { console.error('Serve --cartella'); process.exit(1); }
 const garage = path.resolve(o.cartella);
 const riepilogo = { garage, versione: VERSIONE, fatto: [], attenzione: [] };
+
+if (o.dopoEsportazione !== undefined) {
+  // Impostazione del grande: un comando che /esporta lancia dopo aver creato lo zip.
+  const file = path.join(garage, 'portale.json');
+  if (!fs.existsSync(file)) { console.error('Qui non c\'è un garage.'); process.exit(1); }
+  const portale = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const comando = String(o.dopoEsportazione).trim();
+  const prima = typeof portale.dopo_esportazione === 'string' ? portale.dopo_esportazione.trim() : '';
+  if (comando) portale.dopo_esportazione = comando; else delete portale.dopo_esportazione;
+  fs.writeFileSync(file, JSON.stringify(portale, null, 2) + '\n');
+  // Il comando parte da dentro motore/esporta.mjs, che è già permesso: nessuna nuova regola nei permessi.
+  riepilogo.fatto.push(comando ? `dopo ogni esportazione parte: ${comando}` : 'nessun comando dopo l\'esportazione');
+  if (prima && prima !== comando) riepilogo.attenzione.push(`sostituito il comando precedente: ${prima}`);
+  console.log(JSON.stringify(riepilogo, null, 2));
+  process.exit(0);
+}
 
 if (o.aggiorna) {
   if (!fs.existsSync(path.join(garage, 'portale.json'))) { console.error('Qui non c\'è un garage da aggiornare.'); process.exit(1); }

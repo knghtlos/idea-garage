@@ -3,6 +3,7 @@
 // Dentro un Idea Garage blocca quello che non deve mai succedere, anche per sbaglio:
 // lavorare fuori dal garage, toccare il motore, scaricare cose, cancellare, approvare pubblicazioni.
 // Fuori da un garage non fa niente.
+import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { trovaGarage, leggiJSON, leggiStdin } from './trova-garage.mjs';
@@ -44,6 +45,19 @@ if (['Write', 'Edit', 'MultiEdit', 'NotebookEdit'].includes(strumento)) {
   if (MOTORE.some((r) => r.test(rel))) {
     nega(`"${rel}" is part of the garage engine and is only changed by updating the plugin. To personalise the portal change only portale.json and tema.css; game files live in giochi/<project>/.`);
   }
+  // Il comando "dopo_esportazione" lo imposta solo il grande (via prepara-garage.mjs, con la sua approvazione):
+  // Claude non può cambiarlo scrivendo portale.json, altrimenti potrebbe far partire comandi qualsiasi.
+  if (rel === 'portale.json') {
+    const leggi = (t) => { try { return (JSON.parse(t) || {}).dopo_esportazione ?? null; } catch { return undefined; } };
+    let attuale = null;
+    try { attuale = leggi(fs.readFileSync(path.join(garage, 'portale.json'), 'utf8')); } catch { /* niente */ }
+    const pezzi = [input.old_string, input.new_string, ...(input.edits || []).flatMap((e) => [e.old_string, e.new_string])];
+    const tocca = pezzi.some((x) => typeof x === 'string' && x.includes('dopo_esportazione'));
+    const cambia = typeof input.content === 'string' && leggi(input.content) !== attuale;
+    if (tocca || cambia) {
+      nega('the "dopo_esportazione" setting can only be changed by the grown-up, with: /idea-garage:start impostazioni.');
+    }
+  }
   process.exit(0);
 }
 
@@ -52,6 +66,7 @@ if (strumento === 'Bash') {
   const c = comando.replace(/\s+/g, ' ');
 
   if (/\bsudo\b/.test(c)) nega('administrator commands are not allowed.');
+  if (/dopo_esportazione/.test(c) && !/prepara-garage\.mjs/.test(c)) nega('the "dopo_esportazione" setting can only be changed by the grown-up, with: /idea-garage:start impostazioni.');
   if (/\b(curl|wget|Invoke-WebRequest|iwr)\b/.test(c)) nega('downloading from the internet is not allowed in the garage (npm install and "npx playwright install chromium" are the only allowed downloads).');
   if (/\bnpm (publish|unpublish)\b/.test(c)) nega('publishing npm packages is not part of the garage.');
   if (/\bgh pr merge\b/.test(c) || /\bgh api\b.*\/merge\b/.test(c)) nega('approving a publishing request is the grown-up\'s decision, on GitHub. Never merge it.');

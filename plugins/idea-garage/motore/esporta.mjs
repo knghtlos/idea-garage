@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 
 const MOTORE = path.dirname(fileURLToPath(import.meta.url));
 const radice = process.cwd();
@@ -135,4 +136,29 @@ const destinazione = path.join(cartella, `${slug}-${giornoTesto}.zip`);
 fs.writeFileSync(destinazione, Buffer.concat([...pezzi, centraleBuf, fine]));
 
 const kb = Math.round(fs.statSync(destinazione).size / 1024);
-console.log(JSON.stringify({ zip: path.relative(radice, destinazione), file: file.size, kb }, null, 2));
+const risultato = { zip: path.relative(radice, destinazione), file: file.size, kb, dopo_esportazione: null };
+
+// 5. Aggancio facoltativo: un comando scelto dal grande nelle impostazioni del garage
+//    (portale.json → "dopo_esportazione"). Riceve il percorso completo dello zip e il nome del progetto.
+//    Il plugin non sa cosa fa: può caricare il gioco su un sito, copiarlo su un disco, quello che serve.
+let portale = {};
+try { portale = JSON.parse(fs.readFileSync(path.join(radice, 'portale.json'), 'utf8')); } catch { /* niente */ }
+const aggancio = typeof portale.dopo_esportazione === 'string' ? portale.dopo_esportazione.trim() : '';
+if (aggancio) {
+  const esito = spawnSync(aggancio, [JSON.stringify(destinazione), slug], {
+    cwd: radice,
+    shell: true,
+    encoding: 'utf8',
+    timeout: 5 * 60 * 1000,
+    env: { ...process.env, IDEA_GARAGE_ZIP: destinazione, IDEA_GARAGE_PROGETTO: slug, IDEA_GARAGE_CARTELLA: radice }
+  });
+  risultato.dopo_esportazione = {
+    comando: aggancio,
+    riuscito: esito.status === 0,
+    codice: esito.status,
+    uscita: (esito.stdout || '').trim().split('\n').slice(-15).join('\n'),
+    errori: (esito.stderr || (esito.error ? esito.error.message : '')).trim().split('\n').slice(-15).join('\n')
+  };
+}
+console.log(JSON.stringify(risultato, null, 2));
+if (risultato.dopo_esportazione && !risultato.dopo_esportazione.riuscito) process.exit(4);
